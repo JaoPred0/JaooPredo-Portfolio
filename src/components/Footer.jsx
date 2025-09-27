@@ -183,13 +183,13 @@ const Footer = () => {
               className="text-gray-400 text-base mb-3 hover:text-white transition-colors duration-300 cursor-pointer"
               whileHover={{ x: 5 }}
             >
-              oi@big-german.dev
+              jhonpitere1633@gmail.com
             </motion.p>
             <motion.p
               className="text-gray-400 text-base hover:text-white transition-colors duration-300 cursor-pointer"
               whileHover={{ x: 5 }}
             >
-              +55 (11) 99999-9999
+              +55 (67) 99661-0494
             </motion.p>
           </motion.div>
         </motion.div>
@@ -247,7 +247,7 @@ const Footer = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              © 2024 BigGerman. Todos os direitos reservados.
+              © 2024 JaooPredo. Todos os direitos reservados.
             </motion.p>
             <motion.div
               className="flex items-center gap-3"
