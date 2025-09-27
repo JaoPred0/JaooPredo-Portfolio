@@ -20,46 +20,48 @@ const ProjetosSection = () => {
     },  
     {  
       id: 2,  
-      title: "ShopFlow E-commerce",  
-      description: "Loja online com carrinho esperto que sugere produtos baseados no seu humor – sim, até isso eu pensei.",  
+      title: "Portal Inmigra Acción",  
+      description: "Estamos ajudando, acolhendo e direcionando para um melhor caminho e integridade na nossa cidade.",  
       icon: Code,  
-      link: "#",  
-      imageUrl: "/images/shopflow-preview.jpg"  
+      link: "https://portal-imigrantes.vercel.app",  
+      githubLink: "https://github.com/JaoPred0/portal-imigrantes",
+      imageUrl: "/Portal-Inmigra-Accion.png"  
     },  
     {  
       id: 3,  
-      title: "DataPulse Dashboard",  
-      description: "Painel de dados em tempo real que transforma números chatos em gráficos que dançam sozinhos.",  
+      title: "LaAFIF",  
+      description: "O LaAFIF é uma aplicação web interativa desenvolvida para auxiliar professores e profissionais de Educação Física na aplicação e análise de testes físicos.",  
       icon: BarChart3,  
-      link: "#",  
-      imageUrl: "/images/datapulse-preview.jpg"  
+      link: "https://laafif-app.vercel.app",  
+      githubLink: "https://github.com/JaoPred0/portal-imigrantes",
+      imageUrl: "/laafif.png"  
     },  
-    {  
-      id: 4,  
-      title: "CodeNest",  
-      description: "Uma plataforma colaborativa para desenvolvedores compartilharem snippets de código e ideias malucas que salvam o dia.",  
-      icon: Code,  
-      link: "#",  
-      githubLink: "#",  
-      imageUrl: "/images/codenest-preview.jpg"  
-    },  
-    {  
-      id: 5,  
-      title: "FitTrackr",  
-      description: "App de tracking de exercícios que motiva com badges e lembretes engraçados – porque malhar sozinho é triste.",  
-      icon: BarChart3,  
-      link: "#",  
-      imageUrl: "/images/fittrackr-preview.jpg"  
-    },  
-    {  
-      id: 6,  
-      title: "StoryWeave",  
-      description: "Ferramenta para criar histórias interativas como jogos, perfeita pra escritores preguiçosos que amam ramificações.",  
-      icon: ShoppingBag,  
-      link: "#",  
-      githubLink: "#",  
-      imageUrl: "/images/storyweave-preview.jpg"  
-    }  
+    // {  
+    //   id: 4,  
+    //   title: "CodeNest",  
+    //   description: "Uma plataforma colaborativa para desenvolvedores compartilharem snippets de código e ideias malucas que salvam o dia.",  
+    //   icon: Code,  
+    //   link: "#",  
+    //   githubLink: "#",  
+    //   imageUrl: "/images/codenest-preview.jpg"  
+    // },  
+    // {  
+    //   id: 5,  
+    //   title: "FitTrackr",  
+    //   description: "App de tracking de exercícios que motiva com badges e lembretes engraçados – porque malhar sozinho é triste.",  
+    //   icon: BarChart3,  
+    //   link: "#",  
+    //   imageUrl: "/images/fittrackr-preview.jpg"  
+    // },  
+    // {  
+    //   id: 6,  
+    //   title: "StoryWeave",  
+    //   description: "Ferramenta para criar histórias interativas como jogos, perfeita pra escritores preguiçosos que amam ramificações.",  
+    //   icon: ShoppingBag,  
+    //   link: "#",  
+    //   githubLink: "#",  
+    //   imageUrl: "/images/storyweave-preview.jpg"  
+    // }  
   ];  
 
   const visibleProjects = projects.slice(0, visibleCount);  
