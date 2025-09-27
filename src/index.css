@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import "tailwindcss";
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+/* Reset e suavização de fontes */
+body {
+  font-family: "Zalando Sans Expanded", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .magic-line::before {
+    width: 3px;
+    height: 3px;
+    top: -1.5px;
+    left: -1.5px;
+  }
+}
