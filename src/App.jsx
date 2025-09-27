@@ -7,7 +7,6 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ProjetosSection from "./components/ProjetosSection";
-import WaveBackground from "./WaveBackground";
 import ContactForm from "./components/ContactForm";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Footer from "./components/Footer";
@@ -77,7 +76,6 @@ const App = () => {
 
         <section data-scroll-section id="contato" className="relative z-10">
           <div className="min-h-screen bg-gradient-to-br bg-[#020202] relative overflow-hidden">
-            <WaveBackground />
             <div className="container mx-auto px-4 py-12 max-w-2xl relative z-10">
               <motion.h1
                 className="text-4xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"

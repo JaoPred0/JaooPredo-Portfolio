@@ -1,26 +1,28 @@
 import React, { useState, useRef } from 'react';  
 import { motion, AnimatePresence } from 'framer-motion';  
-import { Github, ExternalLink, X, Code, ShoppingBag, BarChart3 } from 'lucide-react';  
+import { Github, ExternalLink, X, Code, ShoppingBag, BarChart3, ChevronDown } from 'lucide-react';  
 
 const ProjetosSection = () => {  
   const [hoveredProject, setHoveredProject] = useState(null);  
   const [activeImage, setActiveImage] = useState(null);  
+  const [visibleCount, setVisibleCount] = useState(3);  
   const imageRef = useRef(null);  
 
   const projects = [  
     {  
       id: 1,  
-      title: "TaskMaster AI",  
-      description: "App de tarefas com inteligência artificial que prevê o que você vai procrastinar e te cutuca na hora certa.",  
-      icon: Code,  
-      link: "#",  
-      imageUrl: "/images/taskmaster-preview.jpg"  
+      title: "EducaShop",  
+      description: "EducaShop oferece materiais prontos, resumos e exercícios para estudo. Tudo para você arrasar nas provas e concursos.",  
+      icon: ShoppingBag,  
+      link: "https://educa-shop.vercel.app",  
+      githubLink: "https://github.com/JaoPred0/EducaShop-Central",  
+      imageUrl: "/educashop-projeto.png"  
     },  
     {  
       id: 2,  
       title: "ShopFlow E-commerce",  
       description: "Loja online com carrinho esperto que sugere produtos baseados no seu humor – sim, até isso eu pensei.",  
-      icon: ShoppingBag,  
+      icon: Code,  
       link: "#",  
       imageUrl: "/images/shopflow-preview.jpg"  
     },  
@@ -31,8 +33,36 @@ const ProjetosSection = () => {
       icon: BarChart3,  
       link: "#",  
       imageUrl: "/images/datapulse-preview.jpg"  
+    },  
+    {  
+      id: 4,  
+      title: "CodeNest",  
+      description: "Uma plataforma colaborativa para desenvolvedores compartilharem snippets de código e ideias malucas que salvam o dia.",  
+      icon: Code,  
+      link: "#",  
+      githubLink: "#",  
+      imageUrl: "/images/codenest-preview.jpg"  
+    },  
+    {  
+      id: 5,  
+      title: "FitTrackr",  
+      description: "App de tracking de exercícios que motiva com badges e lembretes engraçados – porque malhar sozinho é triste.",  
+      icon: BarChart3,  
+      link: "#",  
+      imageUrl: "/images/fittrackr-preview.jpg"  
+    },  
+    {  
+      id: 6,  
+      title: "StoryWeave",  
+      description: "Ferramenta para criar histórias interativas como jogos, perfeita pra escritores preguiçosos que amam ramificações.",  
+      icon: ShoppingBag,  
+      link: "#",  
+      githubLink: "#",  
+      imageUrl: "/images/storyweave-preview.jpg"  
     }  
   ];  
+
+  const visibleProjects = projects.slice(0, visibleCount);  
 
   const containerVariants = {  
     hidden: { opacity: 0 },  
@@ -87,6 +117,10 @@ const ProjetosSection = () => {
     setHoveredProject(null);  
   };  
 
+  const handleShowMore = () => {  
+    setVisibleCount(prev => Math.min(prev + 3, projects.length));  
+  };  
+
   const imageVariants = {  
     initial: { opacity: 0, scale: 0.9, y: 20 },  
     animate: {  
@@ -103,6 +137,14 @@ const ProjetosSection = () => {
     }  
   };  
 
+  const buttonVariants = {  
+    hover: {  
+      scale: 1.05,  
+      transition: { type: 'spring', stiffness: 400 }  
+    },  
+    tap: { scale: 0.98 }  
+  };  
+
   return (  
     <section  
       className="relative min-h-screen py-16 px-4 overflow-hidden"  
@@ -112,14 +154,14 @@ const ProjetosSection = () => {
     >  
       {/* Fundo animado: só preto puro com fade sutil, sem cores */}  
       <div className="absolute inset-0 bg-[#020202] opacity-100 animate-fade-black">  
-        <style>{`  
-          @keyframes fade-black {  
-            0%, 100% { opacity: 1; }  
-            50% { opacity: 0.95; }  
-          }  
-          .animate-fade-black {  
-            animation: fade-black 20s ease-in-out infinite;  
-          }  
+        <style>{`    
+          @keyframes fade-black {    
+            0%, 100% { opacity: 1; }    
+            50% { opacity: 0.95; }    
+          }    
+          .animate-fade-black {    
+            animation: fade-black 20s ease-in-out infinite;    
+          }    
         `}</style>  
       </div>  
 
@@ -161,81 +203,117 @@ const ProjetosSection = () => {
           whileInView="visible"  
           viewport={{ once: true, margin: "-100px" }}  
         >  
-          {projects.map((project, index) => (  
-            <motion.div  
-              key={project.id}  
-              className="relative group"  
-              variants={cardVariants}  
-              initial="hidden"  
-              whileInView="visible"  
-              whileHover="hover"  
-              viewport={{ once: true }}  
-              transition={{ delay: index * 0.1 }}  
-              onMouseEnter={() => handleMouseEnter(project)}  
-              onMouseLeave={handleMouseLeave}  
-              whileTap={{ scale: 0.97 }}  
-            >  
+          <AnimatePresence>  
+            {visibleProjects.map((project, index) => (  
               <motion.div  
-                className="relative bg-black border border-white/50 rounded-3xl p-6 md:p-8 overflow-hidden cursor-pointer text-white shadow-2xl hover:shadow-black/80 transition-all duration-500"  
-                style={{  
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.6)'  
+                key={project.id}  
+                className="relative group"  
+                variants={cardVariants}  
+                initial="hidden"  
+                whileInView="visible"  
+                whileHover="hover"  
+                viewport={{ once: true }}  
+                transition={{ delay: index * 0.1 }}  
+                onMouseEnter={() => handleMouseEnter(project)}  
+                onMouseLeave={handleMouseLeave}  
+                whileTap={{ scale: 0.97 }}  
+                exit={{  
+                  opacity: 0,  
+                  scale: 0.95,  
+                  transition: { duration: 0.2 }  
                 }}  
-                whileHover={{  
-                  scale: 1.02,  
-                  backgroundColor: '#111111'  
-                }}  
-                onClick={() => window.open(project.link, '_blank')}  
               >  
-                {/* Imagem de prévia no card */}  
-                <div className="relative mb-6 overflow-hidden rounded-2xl h-48 bg-white flex items-center justify-center group-hover:opacity-100 transition-opacity duration-300">  
-                  <motion.div  
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"  
-                  />  
-                  <project.icon className="w-12 h-12 text-white absolute z-10 group-hover:scale-110 transition-transform duration-300" />  
-                  <img  
-                    src={project.imageUrl}  
-                    alt={project.title}  
-                    className="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity duration-500"  
-                  />  
-                </div>  
-
                 <motion.div  
-                  className="space-y-3"  
-                  animate={hoveredProject?.id === project.id ? { opacity: 1 } : { opacity: 0.9 }}  
-                  transition={{ duration: 0.3 }}  
+                  className="relative bg-black border border-white/50 rounded-3xl p-6 md:p-8 overflow-hidden cursor-pointer text-white shadow-2xl hover:shadow-black/80 transition-all duration-500"  
+                  style={{  
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.6)'  
+                  }}  
+                  whileHover={{  
+                    scale: 1.02,  
+                    backgroundColor: '#111111'  
+                  }}  
+                  onClick={() => window.open(project.link, '_blank')}  
                 >  
-                  <motion.h3  
-                    className="text-xl md:text-2xl font-bold text-white mb-2"  
-                    whileHover={{ y: -2 }}  
-                    transition={{ duration: 0.2 }}  
-                  >  
-                    {project.title}  
-                  </motion.h3>  
-                  <p className="text-gray-300 text-sm md:text-base leading-relaxed flex-1">{project.description}</p>  
-                </motion.div>  
+                  {/* Imagem de prévia no card */}  
+                  <div className="relative mb-6 overflow-hidden rounded-2xl h-48 bg-white flex items-center justify-center group-hover:opacity-100 transition-opacity duration-300">  
+                    <motion.div  
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"  
+                    />  
+                    <project.icon className="w-12 h-12 text-white absolute z-10 group-hover:scale-110 transition-transform duration-300" />  
+                    <img  
+                      src={project.imageUrl}  
+                      alt={project.title}  
+                      className="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity duration-500"  
+                    />  
+                  </div>  
 
-                <div className="flex justify-center gap-4 pt-6 border-t border-white/30 mt-4">  
-                  <motion.button  
-                    className="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-black/30 border border-black/30 transition-all duration-300 flex items-center justify-center"  
-                    whileHover={{ scale: 1.1 }}  
-                    whileTap={{ scale: 0.95 }}  
-                    title="Ver no GitHub"  
+                  <motion.div  
+                    className="space-y-3"  
+                    animate={hoveredProject?.id === project.id ? { opacity: 1 } : { opacity: 0.9 }}  
+                    transition={{ duration: 0.3 }}  
                   >  
-                    <Github size={20} />  
-                  </motion.button>  
-                  <motion.button  
-                    className="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-black/30 border border-black/30 transition-all duration-300 flex items-center justify-center"  
-                    whileHover={{ scale: 1.1 }}  
-                    whileTap={{ scale: 0.95 }}  
-                    title="Visitar Site"  
-                  >  
-                    <ExternalLink size={20} />  
-                  </motion.button>  
-                </div>  
+                    <motion.h3  
+                      className="text-xl md:text-2xl font-bold text-white mb-2"  
+                      whileHover={{ y: -2 }}  
+                      transition={{ duration: 0.2 }}  
+                    >  
+                      {project.title}  
+                    </motion.h3>  
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed flex-1">{project.description}</p>  
+                  </motion.div>  
+
+                  <div className="flex justify-center gap-4 pt-6 border-t border-white/30 mt-4">  
+                    <motion.button  
+                      className="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-black/30 border border-black/30 transition-all duration-300 flex items-center justify-center"  
+                      whileHover={{ scale: 1.1 }}  
+                      whileTap={{ scale: 0.95 }}  
+                      title="Ver no GitHub"  
+                      onClick={(e) => {  
+                        e.stopPropagation();  
+                        window.open(project.githubLink || project.link, "_blank");  
+                      }}  
+                    >  
+                      <Github size={20} />  
+                    </motion.button>  
+                    <motion.button  
+                      className="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-black/30 border border-black/30 transition-all duration-300 flex items-center justify-center"  
+                      whileHover={{ scale: 1.1 }}  
+                      whileTap={{ scale: 0.95 }}  
+                      title="Visitar Site"  
+                      onClick={(e) => {  
+                        e.stopPropagation();  
+                        window.open(project.link, "_blank");  
+                      }}  
+                    >  
+                      <ExternalLink size={20} />  
+                    </motion.button>  
+                  </div>  
+                </motion.div>  
               </motion.div>  
-            </motion.div>  
-          ))}  
+            ))}  
+          </AnimatePresence>  
         </motion.div>  
+
+        {visibleCount < projects.length && (  
+          <motion.div  
+            className="text-center mt-12"  
+            initial={{ opacity: 0, y: 20 }}  
+            whileInView={{ opacity: 1, y: 0 }}  
+            viewport={{ once: true }}  
+            transition={{ duration: 0.5 }}  
+          >  
+            <motion.button  
+              onClick={handleShowMore}  
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-2xl text-white font-semibold text-lg transition-all duration-300 backdrop-blur-sm"  
+              variants={buttonVariants}  
+              whileHover="hover"  
+              whileTap="tap"  
+            >  
+              Mostrar Mais Projetos  
+              <ChevronDown className="w-5 h-5 transition-transform group-hover:rotate-180" />  
+            </motion.button>  
+          </motion.div>  
+        )}  
       </div>  
 
       {/* Modal de imagem em vez de vídeo */}  
