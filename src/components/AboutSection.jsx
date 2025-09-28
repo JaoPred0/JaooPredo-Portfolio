@@ -51,7 +51,7 @@ const AboutSection = () => {
     return (
         <section
             ref={ref}
-            className="scroll-mt-24 min-h-screen bg-[#020202] text-white flex flex-col items-center justify-start    relative overflow-hidden"
+            className="scroll-mt-24 min-h-screen bg-[#020202] text-white flex flex-col items-center justify-start relative overflow-hidden"
         >
             <motion.div
                 className="absolute inset-0 h-[200vh] opacity-20"
